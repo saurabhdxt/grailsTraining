@@ -1,12 +1,17 @@
 <%@ page import="com.comp.trainingapp.Company" %>
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'company.label', default: 'Company')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
+		
+		<g:applyLayout name="main"/>
+		
 	</head>
 	<body>
+	
 		<a href="#create-company" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
@@ -26,6 +31,9 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
+			
+			<sec:username/>
+			
 			<g:form action="save" >
 				<fieldset class="form">
 					<g:render template="form"/>

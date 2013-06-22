@@ -1,4 +1,5 @@
 // locations to search for config files that get merged into the main config;
+import grails.plugins.springsecurity.SecurityConfigType;
 // config files can be ConfigSlurper scripts, Java properties files, or classes
 // in the classpath in ConfigSlurper format
 
@@ -89,3 +90,26 @@ log4j = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+
+// Added by the Spring Security Core plugin:
+grails.plugins.springsecurity.userLookup.userDomainClassName = 'com.comp.trainingapp.UserLogin'
+grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'com.comp.trainingapp.UserLoginUserLoginRole'
+grails.plugins.springsecurity.authority.className = 'com.comp.trainingapp.UserLoginRole'
+
+
+grails.plugins.springsecurity.securityConfigType = SecurityConfigType.InterceptUrlMap
+grails.plugins.springsecurity.interceptUrlMap = [
+	
+	'/':							[ 'ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_USER' ],
+	'/login/**':					[ 'IS_AUTHENTICATED_ANONYMOUSLY' ],
+	'/logout/**':					[ 'IS_AUTHENTICATED_ANONYMOUSLY' ],
+	'/checkRest/**':				[ 'IS_AUTHENTICATED_ANONYMOUSLY' ],
+	
+	'/company/**':		    		[  'ROLE_ADMIN', 'ROLE_USER' ],
+	'/companyDetail/**':			[ 'ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_USER' ],
+	'/contrTest/**':				[  'ROLE_ADMIN' ],
+	
+	'/my/**':						[ 'ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_USER' ],
+	'/product/**':					[ 'ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_USER' ],
+	
+	]

@@ -4,6 +4,8 @@ import org.springframework.dao.DataIntegrityViolationException
 
 class CompanyController {
 
+	def springSecurityService
+	
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index() {
@@ -15,7 +17,15 @@ class CompanyController {
         [companyInstanceList: Company.list(params), companyInstanceTotal: Company.count()]
     }
 
+	
     def create() {
+		
+		def currentUser = springSecurityService.getCurrentUser();
+		def currentUserRole = springSecurityService.getPrincipal().getAuthorities()
+		println("springSecurityService.getPrincipal()=${springSecurityService.getPrincipal()}")
+		println("currentUser=${currentUser}")
+		println("currentUser1=${currentUserRole}")
+		
         [companyInstance: new Company(params)]
     }
 

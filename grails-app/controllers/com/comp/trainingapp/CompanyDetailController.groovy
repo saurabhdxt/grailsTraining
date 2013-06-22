@@ -156,7 +156,6 @@ class CompanyDetailController {
 		}
 		
 		println query.find()
-		
 	}
 	
 }

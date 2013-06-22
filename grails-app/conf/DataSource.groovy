@@ -29,9 +29,10 @@ environments {
 			dbCreate = "update" // one of 'create', 'create-drop','update'
 			driverClassName = "com.mysql.jdbc.Driver"
 			dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
-			url = "jdbc:mysql://localhost/webtvdb123"
+			url = "jdbc:mysql://localhost/traingappdb"
 			username = "root"
 			password = ""
+			logSql = true
         }
     }
     production {

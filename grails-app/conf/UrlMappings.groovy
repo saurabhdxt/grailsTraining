@@ -34,5 +34,6 @@ class UrlMappings {
 			action = [GET: "show", PUT: "update", DELETE: "delete", POST: "save"]
 		}
 		
+		"/checkRest/$id?"(resource:"checkRest")
 	}
 }
